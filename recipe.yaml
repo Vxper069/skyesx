@@ -72,6 +72,11 @@ tasks:
     ref: 776ac8f3898182e5c075d533bbd89e92efa017e9
     dest: ./resources/EasyAdmin
 
+  - action: download_github
+    src: https://github.com/gabovrs/vrs_mdt
+    ref: b2e1a21e66c2218a6bcdb4068908f19ccb0c6a57
+    dest: ./resources/vrs_mdt
+
 
   - action: download_github
     src: https://github.com/DevTestingPizza/vSync
