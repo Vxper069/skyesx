@@ -1,8 +1,7 @@
-# PlumeESX-recipe (retired)  
-  
-> **NOTE: Due to ESX itself being unmaintained, we are archiving PlumeESX. We recommend using the QBCore Recipe.**
+# SKYESX-recipe (retired)  
 
-[![Plume ESX Video Tutorial](https://i.imgur.com/jjUbS1Z.png)](https://www.youtube.com/watch?v=iGfwUCO0RZQ)
+Created By Vxper & onryli
+  
 
 **Description:** A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended.  
 
