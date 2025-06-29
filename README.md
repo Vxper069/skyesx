@@ -14,22 +14,9 @@ Please check the [**Recipe Documentation Page**](https://github.com/tabarra/txAd
 - [ ] Maybe add this: https://github.com/czsquizer/sqz_carmenu
 
 ## Changelog
+Update Recipe
 
-### v3.0.0
-- Updated recipe to work with NEW ESX Legacy
-- Added new multicharacter system
-- Updated IPLs
-- Update loading screen
-- Optimised file structure
-- Minimised server.cfg
-- Added modern hud
-- Added MDT (police Mobile Data Terminal)
-- Added shotspotter
-- Added pma-voice
-- Added RP-Radio
 
-### v2.1.0
-- Removed `cd_easytime`;
-- Fixed spawnpoint being inside the job listing marker;
-- Fixed vehicle ownership issues (solves cars not saving in garage);
-- Automatic admin for people that join the server for the first time with the `commands` ace permission.
+
+
+https://raw.githubusercontent.com/Vxper069/skyesx/main/recipe.yaml
