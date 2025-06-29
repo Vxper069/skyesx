@@ -1,8 +1,8 @@
 $engine: 3
 $onesync: legacy
-name: PlumeESXLegacy
-version: 3.3.0
-author: Tabarra & SaltySea
+name: SKYESXLegacy
+version: 3.3.1
+author: Vxper & Joel
 description: A full featured and highly configurable yet lightweight ESX Legacy base that can be easily extended. 
 
 tasks:
