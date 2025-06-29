@@ -12,60 +12,59 @@ tasks:
     ref: master
     subpath: resources
     dest: ./resources/[cfx-default]
+  - action: remove_path
+    path: ./resources/[cfx-default]/[gameplay]/chat
   
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_github
-    src: https://github.com/tabarra/PlumeESX-recipe
-    ref: main
-    dest: ./tmp/plume_esx
+    src: https://github.com/esx-framework/esx-recipes
+    ref: legacy
+    dest: ./tmp/recipe
 
   - action: move_path
-    src: ./tmp/plume_esx/server.cfg
+    src: ./tmp/recipe/server.cfg
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/plume_esx/loadingscreen
-    dest: ./resources/loadingscreen
-
-  - action: connect_database
-  - action: query_database
-    file: ./tmp/plume_esx/plume.sql
+    src: ./tmp/recipe/esxLogo.png
+    dest: ./esxLogo.png
 
   # Download basic resources and ESX dependencies
-  - action: download_github
-    src: https://github.com/esx-framework/esx-legacy
-    ref: 8153f6a9221baeef0affb0176e5811007b8f5e3b
-    dest: ./resources/[legacy]
+
+  - action: connect_database
 
   - action: download_github
-    src: https://github.com/tabarra/simpledrift
-    ref: 2ed57c224ae70549fbcfccc957a00ff496b78c77
-    dest: ./resources/simpledrift
+    src: https://github.com/esx-framework/esx-core
+    ref: main
+    dest: ./tmp/core
+
+  - action: query_database
+    file: ./tmp/core/[SQL]/legacy.sql
+
+  - action: download_github
+    src: https://github.com/esx-framework/ESX-Legacy-Addons/
+    ref: main
+    dest: ./tmp/addons
+
+  - action: move_path
+    src: ./tmp/core/[core]
+    dest: ./resources/[core]
+
+  - action: move_path
+    src: ./tmp/addons/[esx_addons]
+    dest: ./resources/[esx_addons]
 
   - action: download_github
     src: https://github.com/Bob74/bob74_ipl
-    ref: e949c08c67bdfe3fb981bf4f77477faf26d187e6
-    dest: ./resources/bob74_ipl
-  
-  - action: download_github
-    src: https://github.com/brouznouf/fivem-mysql-async
-    ref: c5fa317a65acfe2eef453257e19e3b4fde137089
-    dest: ./resources/mysql-async
+    ref: master
+    dest: ./resources/[standalone]/bob74_ipl
 
   - action: download_github
     src: https://github.com/AvarianKnight/pma-voice
-    ref: 4754a4dfff1e897f14df6d7d0e06c7fbfbaa20d5
-    dest: ./resources/pma-voice
+    ref: main
+    dest: ./resources/[standalone]/pma-voice
 
-  - action: download_github
-    src: https://github.com/AvarianKnight/rp-radio
-    ref: 558e14d3eb7eed62e780a30c2867eadb61ffe0ac
-    dest: ./resources/rp-radio
 
-  - action: download_github
-    src: https://github.com/thelindat/linden_outlawalert
-    ref: a28b0ab65b1a4a9fed4063a26566cf697c263fc8
-    dest: ./resources/shotspotter
 
   - action: download_github
     src: https://github.com/Blumlaut/EasyAdmin
@@ -73,115 +72,38 @@ tasks:
     dest: ./resources/EasyAdmin
 
   - action: download_github
-    src: https://github.com/gabovrs/vrs_mdt
+    src: https://github.com/overextended/ox_inventory
     ref: b2e1a21e66c2218a6bcdb4068908f19ccb0c6a57
+    dest: ./resources/ox_inventory
+
+
+
+  - action: download_github
+    src: https://github.com/gabovrs/vrs_mdt
+    ref: 194128eefb1386e40aa8a738e68134ec746e9fc7
     dest: ./resources/vrs_mdt
 
-
+    
   - action: download_github
-    src: https://github.com/DevTestingPizza/vSync
-    ref: 65f0e3cdd5692b619985a7df6297ffca7db41525
-    dest: ./tmp/vSync
+    src: https://github.com/overextended/ox_lib
+    ref: b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
+    dest: ./resources/ox_lib
 
-  - action: move_path
-    src: ./tmp/vSync/vSync
-    dest: ./resources/vSync
-
-  ## GCPhone stuff
-  - action: download_file
-    url: https://github.com/Re-Ignited-Development/Re-Ignited-Phone/releases/download/V1.5/resources-1.2.zip
-    path: ./tmp/gcphone.zip
-  - action: unzip
-    src: ./tmp/gcphone.zip
-    dest: ./tmp
-  - action: move_path
-    src: ./tmp/resources-1.2/gcphone
-    dest: ./resources/gcphone
-
-  ## vstancer stuff
-  - action: download_file
-    url: https://github.com/carmineos/fivem-vstancer/releases/download/v1.4/vstancer-v1.4.0.zip
-    path: ./tmp/vstancer.zip
-  - action: unzip
-    src: ./tmp/vstancer.zip
-    dest: ./tmp
-  - action: move_path
-    src: ./tmp/vstancer
-    dest: ./resources/vstancer
-
-
-  ## Downloading & Patching configs: cosmo hud
+    
   - action: download_github
-    src: https://github.com/nojdh/cosmo_hud
-    ref: eed8fd7b8cbe8a02ae7339d4dee05b5d56a8097c
-    subpath: cosmo_hud
-    dest: ./resources/[hud]/cosmo_hud
+    src: https://github.com/overextended/ox_doorlock
+    ref: 251f666ba0a1b6ea58ac1c59d03022f04b9ab762
+    dest: ./resources/ox_doorlock
 
-  - action: replace_string
-    file: ./resources/shotspotter/config.lua
-    search: 'Config.Default911 = false'
-    replace: 'Config.Default911 = true'
+    
 
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_status/config.lua
-    search: "    Config.Display        = true"
-    replace: "    Config.Display        = false"
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
+  - action: unzip
+    dest: ./resources/[standalone]
+    src: ./tmp/files/oxmysql.zip
 
-  - action: replace_string
-    file: ./resources/[hud]/cosmo_hud/config.lua
-    search: 'Config.AlwaysShowRadar = false'
-    replace: 'Config.AlwaysShowRadar = true'
-
-  ## Patching configs: esx_basicneeds
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_basicneeds/config.lua
-    search: 'Config.Visible = true'
-    replace: 'Config.Visible = false'
-
-  ## Patching configs: multicharacter 
-  - action: replace_string
-    file: ./resources/[legacy]/[esx]/es_extended/config.lua
-    search: 'Config.Multichar                = false'
-    replace: 'Config.Multichar = true '
-
-  - action: replace_string
-    file: ./resources/[legacy]/[esx_addons]/esx_multicharacter/server/main.lua
-    search: "Config.Database = 'es_extended'"
-    replace: "Config.Database = '{{dbName}}'"
-
-
-  ## Patching configs: rp-radio
-  - action: replace_string
-    file: ./resources/rp-radio/config.lua
-    search: |
-      Name = "INPUT_REPLAY_START_STOP_RECORDING_SECONDARY", -- Control name"
-    replace: | 
-      Name = "INPUT_SELECT_CHARACTER_MICHAEL", -- Control name"
-
-  - action: replace_string
-    file: ./resources/rp-radio/config.lua
-    search: 'Key = 289, -- F2'
-    replace: 'Key = 166, -- F5'
-
-  - action: replace_string
-    mode: all_vars
-    file: 
-    - ./resources/loadingscreen/config.js
-    - ./resources/[legacy]/[esx_addons]/esx_multicharacter/server/main.lua
-
-  
   ## Cleanup
   - action: remove_path
     path: ./tmp
-  - action: remove_path
-    path: ./resources/esx_example
-  - action: remove_path
-    path: ./resources/server.cfg
-  - action: remove_path
-    path: ./resources/[legacy]/esx_example
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_whitelist
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_voice
-  - action: remove_path
-    path: ./resources/[legacy]/[esx_addons]/esx_phone
